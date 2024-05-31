@@ -1,0 +1,23 @@
+---
+layout: default
+permalink_name: /
+comments: false
+---
+
+<ul>
+  {% assign recent_posts = site.posts | slice: 0, 10 %}
+  {% for post in recent_posts %}
+    <li class="post-item">
+      {{ post.date | date: "%Y/%m/%d" }}
+      <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+      {% if post.description %}
+        -- {{ post.description | strip_html | strip }}
+      {% else if post.excerpt %}
+        -- {{ post.excerpt | strip_html | strip }}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+<div class="flex-spacer"></div>
+
